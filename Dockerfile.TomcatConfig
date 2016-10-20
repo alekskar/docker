@@ -1,0 +1,4 @@
+FROM ubuntu
+VOLUME /opt/tomcat/conf
+COPY resources/tomcat/conf /opt/tomcat/conf
+CMD sleep infinity

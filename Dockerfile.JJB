@@ -1,0 +1,6 @@
+FROM ubuntu
+RUN apt-get update && apt-get install python-pip && pip install jenkins-job-builder
+RUN pip install PyYAML python-jenkins
+COPY resources/jjb /tmp
+WORKDIR /tmp/jjb
+CMD jjb-runner.sh
