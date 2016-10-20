@@ -1,0 +1,15 @@
+FROM ubuntu
+ENV JENKINS_HOME /var/jenkins_home
+
+ARG user=jenkins
+ARG group=jenkins
+ARG uid=1000
+ARG gid=1000
+
+RUN groupadd -g ${gid} ${group} \
+    && useradd -d "$JENKINS_HOME" -u ${uid} -g ${gid} -m -s /bin/bash ${user}
+
+COPY jenkins_home /var/jenkins_home
+RUN chown -R ${user} "$JENKINS_HOME"
+VOLUME /var/jenkins_home
+CMD sleep infinity
